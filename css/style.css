@@ -1,0 +1,1782 @@
+@charset "UTF-8";
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333333;
+  background: white url(../images/background-image.png);
+  background-attachment: fixed;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.inner {
+  width: 90%;
+}
+
+html {
+  background-color: #2d445d;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-s {
+  top: 0;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: rgba(43, 59, 86, 0.7);
+  transition: all 0.5s ease;
+  color: #fff;
+  z-index: 9999;
+  transition: all 0.5s;
+  z-index: 3;
+  opacity: 0;
+  display: none;
+  font-weight: bold;
+}
+.sidebar-s .icon-g h1 {
+  font-size: 25px;
+  text-align: center;
+  background: #2d445d;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: #fff;
+  font-family: "RocknRoll One", sans-serif;
+}
+.sidebar-s .icon-g .small-title {
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+}
+.sidebar-s .icon-g span {
+  color: #ff6600;
+}
+.sidebar-s .g-menu {
+  margin-top: 50px;
+  border-bottom: 1px solid #fff;
+  width: 180px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.sidebar-s .g-menu li {
+  line-height: 21px;
+  font-size: 16px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+.sidebar-s .g-menu li svg {
+  width: 21px !important;
+  height: auto;
+  fill: #fff;
+  padding-right: 5px;
+}
+.sidebar-s .g-menu li a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  padding-bottom: 2px;
+}
+.sidebar-s .g-menu li a::after {
+  content: "";
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /*線の形状*/
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  /*アニメーションの指定*/
+  transition: all 0.3s;
+  transform: scale(0, 1); /*X方向0、Y方向1*/
+  transform-origin: left top; /*左上基点*/
+}
+.sidebar-s .g-menu li a:hover::after {
+  transform: scale(1, 1); /*X方向にスケール拡大*/
+}
+.sidebar-s .c-menu {
+  margin-top: 30px;
+}
+.sidebar-s .c-menu h2 {
+  line-height: 21px;
+  font-size: 14px;
+  padding-left: 50px;
+  margin-bottom: 10px;
+}
+.sidebar-s .c-menu h2 a {
+  color: #fff;
+}
+.sidebar-s .c-menu h3 {
+  margin-left: 50px;
+}
+.sidebar-s .c-menu h3 a {
+  color: #fff;
+}
+.sidebar-s .c-menu .handled {
+  overflow-y: auto;
+  height: 300px;
+}
+.sidebar-s .c-menu .handled ul {
+  width: 150px;
+  margin-left: 60px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 5px;
+  border-radius: 5px;
+}
+.sidebar-s .c-menu .handled ul li {
+  margin: 5px 0;
+}
+.sidebar-s .c-menu .handled ul li a {
+  color: #fff;
+}
+.sidebar-s .c-menu .handled::-webkit-scrollbar {
+  display: none;
+}
+.sidebar-s .searh-form {
+  width: 75%;
+  margin: 5px auto 0 40px;
+}
+
+.open .sidebar-s {
+  left: 0;
+  opacity: 1;
+  display: inline;
+}
+
+#navArea .toggle-btn {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  z-index: 3;
+  cursor: pointer;
+}
+#navArea .toggle-btn span {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.5s;
+  border-radius: 4px;
+}
+#navArea .toggle-btn span:nth-child(1) {
+  top: 4px;
+}
+#navArea .toggle-btn span:nth-child(2) {
+  top: 14px;
+}
+#navArea .toggle-btn span:nth-child(3) {
+  bottom: 4px;
+}
+
+.open .toggle-btn span {
+  background-color: #fff;
+}
+
+#mask {
+  display: none;
+  transition: all 0.5s;
+}
+
+.open #mask {
+  display: block;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  opacity: 0.8;
+  z-index: 2;
+  cursor: pointer;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d445d;
+  color: #333333;
+  font-family: "Noto Sans JP", sans-serif;
+  z-index: 99;
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+header .cartnai {
+  position: fixed;
+  background-color: #ff6600;
+  bottom: 20px;
+  right: 20px;
+  width: auto;
+  height: auto;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+header .icon-g {
+  margin-left: 25px;
+}
+header .icon-g a {
+  padding: 5px;
+}
+header .icon-g a h1 {
+  font-size: 16px;
+  text-align: center;
+  font-family: "RocknRoll One", sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: #fff;
+}
+header .icon-g a .small-title {
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+}
+header .icon-g a span {
+  color: #ff6600;
+}
+header .color-list {
+  border-top: 1px solid #fff;
+  padding-top: 15px;
+}
+
+.sidebar {
+  display: none;
+}
+
+.Recommendation {
+  width: 80%;
+  margin: 50px auto;
+}
+.Recommendation__flex {
+  border-radius: 10px 10px;
+  border: 1px solid #000000;
+  padding: 10px 30px;
+}
+.Recommendation__title {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333;
+  width: 100%;
+  letter-spacing: 0.15em;
+}
+.Recommendation__image {
+  margin: auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.Recommendation__right {
+  padding: 10px 0px;
+}
+
+.rText h3 {
+  font-size: 1.6rem;
+  color: #1a2400;
+}
+.rText__text {
+  padding: 20px 0;
+}
+.rText__price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ed5b14;
+  text-align: right;
+}
+
+main {
+  width: 100%;
+  margin-top: 92px;
+}
+main .main-image {
+  background: url(../images/main-image3.png);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: auto;
+  width: 100%;
+  display: none;
+}
+main .ubber {
+  margin-right: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+main .ubber span {
+  font-family: "RocknRoll One", sans-serif;
+  font-size: 30px;
+  white-space: nowrap;
+}
+main .ubber span .orange {
+  color: #ff6600;
+}
+main #header_sub {
+  display: none;
+}
+main img {
+  width: 100%;
+}
+main .original-product h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+}
+main .original-product h2 a {
+  color: #333333;
+}
+main .original-product h2:after {
+  content: "ORIGINAL PRODUCT";
+  transform: translateY(-20%);
+  width: 100%;
+  display: block;
+  position: absolute;
+  color: #ededed;
+  z-index: 0;
+}
+main .featured-product h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+}
+main .featured-product h2 a {
+  color: #333333;
+}
+main .featured-product h2:after {
+  content: "FEATURED PRODUCT";
+  transform: translateY(-20%);
+  width: 100%;
+  display: block;
+  position: absolute;
+  color: #ededed;
+  z-index: 0;
+}
+main .handled-product h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+}
+main .handled-product h2:after {
+  content: "PRODUCT HANDLED";
+  transform: translateY(-20%);
+  width: 100%;
+  display: block;
+  position: absolute;
+  color: #ededed;
+  z-index: 0;
+}
+main .m_product_btn a,
+main .m_product_btn button {
+  cursor: pointer;
+  text-align: left;
+  font-family: "Noto Sans JP", sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #333;
+  position: relative;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+main .m_products {
+  margin-top: 150px;
+}
+main .m_products .inner {
+  width: 100%;
+}
+main .m_products .head img {
+  margin-top: 50px;
+  height: auto;
+}
+main .m_products img {
+  height: auto;
+}
+main .m_products .loopimg {
+  float: none;
+}
+main .m_products .loopimg img {
+  display: none;
+}
+main .m_products .detail {
+  width: 88%;
+  margin: 10px auto;
+  font-size: 12px;
+}
+main .m_products .loopexp {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 12px;
+}
+main .m_products h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+}
+main .m_products h3 {
+  color: #ed5b14;
+  text-align: right;
+  font-size: 20px;
+  margin-top: 10px;
+}
+main .title.pc_txt_26_en.sp_txt_18_en {
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+}
+main .m_btn_readmore_wh.aos-init.aos-animate {
+  top: -20px !important;
+}
+main .paydelivery {
+  margin-top: 200px;
+  margin-bottom: 50px;
+}
+main .paydelivery h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+}
+main .paydelivery #postage_table {
+  width: 80%;
+  margin: 0 auto;
+  border: solid 2px #000000 !important;
+  border-collapse: collapse;
+}
+main .paydelivery #postage_table tr {
+  vertical-align: baseline;
+}
+main .paydelivery #postage_table tr th {
+  border: solid 1px #000000;
+  background-color: #ebebeb;
+}
+main .paydelivery #postage_table tr td {
+  border: solid 1px #000000;
+}
+main .catalog__pncs {
+  margin-left: 50px;
+  margin-top: 100px;
+}
+main .catalog h2 {
+  text-align: center;
+  padding-top: 150px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .catalog h2::before,
+main .catalog h2::after {
+  content: "";
+  width: 70px;
+  height: 1px;
+  background-color: #333;
+}
+main .catalog h2::before {
+  margin-right: 20px;
+}
+main .catalog h2::after {
+  margin-left: 20px;
+}
+main .catalog .product-flex-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+main .catalog .product-flex-wrap li {
+  border-collapse: collapse;
+  margin-left: 30px;
+  margin-right: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 45%;
+  margin: 0 5px;
+  margin-bottom: 20px;
+  border: 1px solid #333333;
+  padding: 5px;
+  border-radius: 5px;
+  height: 100%;
+  min-height: 270px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 210px;
+  background: white;
+}
+main .catalog .product-flex-wrap li .img-fit {
+  aspect-ratio: 1000/750;
+  cursor: pointer;
+  overflow: hidden;
+}
+main .catalog .product-flex-wrap li .img-fit img {
+  transition: transform 0.3s ease;
+}
+main .catalog .product-flex-wrap li .img-fit :hover {
+  transform: scale(1.1); /* 拡大 */
+}
+main .catalog .product-flex-wrap li h1 {
+  font-size: 14px;
+  color: #333333;
+  width: 80%;
+  margin: 5px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+main .catalog .product-flex-wrap li .loopimg {
+  float: none;
+}
+main .catalog .product-flex-wrap li .loopimg img {
+  display: none;
+}
+main .catalog .product-flex-wrap li .loopexp {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 12px;
+}
+main .catalog .product-flex-wrap li .detail {
+  display: none;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 12px;
+}
+main .catalog .product-flex-wrap li .m_product_btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+main .catalog .product-flex-wrap li .m_product_btn a {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+main .catalog .product-flex-wrap li .m_product_btn a .font-n {
+  display: none;
+}
+main .catalog .product-flex-wrap li h3 {
+  color: #ed5b14;
+  text-align: right;
+  font-size: 20px;
+  margin-right: 10px;
+}
+main .catalog .navigation {
+  margin: 10px 30%;
+  width: 40%;
+}
+main .tokutei {
+  padding-top: 100px;
+  width: 90%;
+  margin: 0 auto;
+}
+main .tokutei h2 {
+  padding: 50px 0 10px 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+  border-bottom: 2px solid #333333;
+}
+main .tokutei .entry {
+  width: 90%;
+  margin: 0 auto;
+}
+main .tokutei .entry h4 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  padding-left: 15px;
+  border-bottom: 1px solid #2d445d;
+  border-left: 8px solid #2d445d;
+}
+main .tokutei .entry table tbody tr {
+  border-bottom: 1px solid #333333;
+}
+
+.back-btn {
+  padding: 5px 10px;
+  margin-top: 50px;
+  background-color: #999;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.single-main {
+  margin-top: 92px;
+  margin-left: 0px;
+}
+.single-main input#inCart {
+  padding: 5px 10px;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.single-main .detail-right .skubutton {
+  color: #fff;
+  background-color: #ff8c00;
+  border: none;
+  padding: 10px 40px;
+}
+.single-main .detail-left {
+  margin-top: 50px;
+}
+.single-main .detail-left__title {
+  font-size: 20px;
+  text-align: center;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+}
+.single-main .detail-left ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.single-main .detail-left ul li {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 10px;
+}
+.single-main .detail-left ul li img {
+  margin: 10px auto;
+}
+.single-main .detail-left ul li h3 {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.single-main .detail-left ul li .detail {
+  color: #333;
+  font-size: 14px;
+  width: 80%;
+  margin: 10px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: normal;
+}
+.single-main .detail-left ul li p {
+  color: #ff6600;
+  font-weight: bold;
+  text-align: right;
+  width: 80%;
+  margin: 10px auto;
+  font-size: 18px;
+}
+.single-main .detail-left ul li .m_product_btn a {
+  width: 90%;
+  margin: 10px auto;
+  background-color: #333;
+  font-size: 14px !important;
+  height: 50px;
+}
+.single-main .detail-left ul li .m_product_btn a:hover {
+  background-color: #fff;
+  color: #333;
+  border-radius: 0.5px solid #333;
+}
+
+.heightLine {
+  margin-top: 92px;
+}
+.heightLine .post {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.heightLine .post h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+  border-bottom: 2px solid #333333;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.heightLine .post .privacypolicy {
+  width: 90%;
+  margin: 0 auto;
+}
+.heightLine .post .privacypolicy #personal_info ol li {
+  line-height: 30px;
+}
+.heightLine .post .privacypolicy #personal_info h3 {
+  margin: 55px 0 20px 0;
+  font-size: 18px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #2d445d;
+  border-left: 8px solid #2d445d;
+  width: 100%;
+  padding-left: 15px;
+}
+.heightLine .post #customer-info th em::before {
+  content: "必須";
+  display: inline;
+  font-size: 12px;
+}
+.heightLine .post #postage_table {
+  width: 100%;
+  margin: 0 auto;
+  border: solid 2px #000000 !important;
+  border-collapse: collapse;
+}
+.heightLine .post #postage_table tr {
+  vertical-align: baseline;
+}
+.heightLine .post #postage_table tr th {
+  border: solid 1px #000000;
+  background-color: #ebebeb;
+  padding: 5px;
+}
+.heightLine .post #postage_table tr td {
+  border: solid 1px #000000;
+}
+.heightLine .post h2 {
+  font-size: 27px;
+  font-weight: 700;
+  color: #1a2400;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.heightLine .post h2::after {
+  content: "Meisei";
+  display: block;
+  width: 100%;
+  display: block;
+  position: absolute;
+  font-size: 400%;
+  color: #f7f7f7;
+  z-index: -1;
+  transform: translateY(-20%);
+  opacity: 0.3;
+}
+.heightLine .post .company {
+  margin-top: 200px;
+}
+.heightLine .post .company h2 {
+  font-size: 1.9rem;
+  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+  color: #333333;
+  width: 100%;
+  letter-spacing: 0.15em;
+  margin-bottom: 0;
+}
+.heightLine .post .company table {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 25px;
+  border-collapse: collapse;
+  margin-bottom: 200px;
+}
+.heightLine .post .company table th {
+  border-color: #989898;
+  border-style: solid;
+  border-width: 1px 0;
+  height: auto !important;
+  text-align: center;
+  width: 75px;
+}
+.heightLine .post .company table td {
+  border-color: #989898;
+  border-style: solid;
+  border-width: 1px 0;
+  height: auto !important;
+  padding: 24px;
+  border-right: none;
+}
+.heightLine .post .company .map-iframe {
+  width: 90%;
+  height: 55vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+.heightLine .post .company .map-iframe iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.heightLine .post .usccart_navi li.ucart {
+  display: block;
+  color: #262626;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0 0.909095em 0 1.81818em;
+  background: #dedede;
+  float: left;
+  text-decoration: none;
+  text-align: center;
+  line-height: 40px;
+  width: 32%;
+}
+.heightLine .post .usccart_navi li.ucart::before {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0 -20px -20px auto;
+  float: right;
+  -webkit-transform: skew(20deg);
+  background: #dedede;
+  border-right: 4px solid #fff;
+  transform: skew(20deg);
+}
+.heightLine .post .usccart_navi li.ucart::after {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: -20px -20px 0 auto;
+  background: #dedede;
+  border-right: 4px solid #fff;
+  position: relative;
+  content: " ";
+  transform: skew(-20deg);
+}
+.heightLine .post div.usccart_navi li.usccart_cart,
+.heightLine .post div.usccart_navi li.usccart_customer,
+.heightLine .post div.usccart_navi li.usccart_delivery,
+.heightLine .post div.usccart_navi li.usccart_uscconfirm {
+  color: #fff;
+  background-color: #2d445d;
+}
+.heightLine .post .send input.to_customerinfo_button,
+.heightLine .post .send input.to_memberlogin_button,
+.heightLine .post .send input.to_deliveryinfo_button,
+.heightLine .post .send input.to_confirm_button,
+.heightLine .post .send input#purchase_button {
+  color: #fff;
+  background-color: #ff6600;
+}
+.heightLine .post .send input {
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+.heightLine .post #cart .upbutton {
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.heightLine .post #cart .upbutton input {
+  color: #ff6600;
+  margin-left: auto;
+  display: block;
+  padding: 3px 15px;
+  background-color: #fff;
+  border: 1px solid #ff6600;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.heightLine .post #cart_table {
+  width: 100%;
+  border: 1px dotted #ccc;
+  border-collapse: collapse;
+}
+.heightLine .post #cart_table th {
+  padding: 3px;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: #000000;
+}
+.heightLine .post #cart table#cart_table {
+  margin-bottom: 50px;
+}
+.heightLine .post #inside-cart .send {
+  text-align: center;
+  width: auto;
+  margin-top: 15px;
+  padding-top: 15px;
+  border: none;
+}
+.heightLine .post #customer-info h5 {
+  margin-top: 50px;
+}
+.heightLine .post #delivery-info form {
+  margin-top: 50px;
+}
+.heightLine .post .header_explanation {
+  padding-top: 50px;
+}
+.heightLine #itempage .itemsubimg {
+  display: flex;
+  justify-content: flex-start;
+}
+.heightLine input.wpcf7-form-control.wpcf7-submit.has-spinner {
+  width: 200px;
+  margin-left: 40%;
+  margin-right: 50%;
+  background-color: #f60;
+  color: #fff;
+  padding: 10px;
+}
+
+footer .top-back {
+  margin-bottom: 25px;
+  margin-top: 50px;
+  text-align: right;
+  margin-right: 50px;
+}
+footer .top-back a {
+  color: #000000;
+}
+footer .footer-bgcolor {
+  background-color: #2d445d;
+  color: #fff;
+}
+footer .footer-bgcolor .company-flex {
+  padding: 50px 0;
+}
+footer .footer-bgcolor .company-flex .icon-g h1 {
+  font-size: 25px;
+  text-align: center;
+  background: #2d445d;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: #fff;
+  font-family: "RocknRoll One", sans-serif;
+}
+footer .footer-bgcolor .company-flex .icon-g .small-title {
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+}
+footer .footer-bgcolor .company-flex .icon-g span {
+  color: #ff6600;
+}
+footer .footer-bgcolor .company-flex ul {
+  width: 80%;
+  margin: 0 auto;
+}
+footer .footer-bgcolor .company-flex ul li {
+  margin: 10px 0;
+}
+footer .footer-bgcolor .f-navi {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer .footer-bgcolor .f-navi p {
+  margin: 15px;
+}
+footer .footer-bgcolor .f-navi p a {
+  color: #fff;
+}
+footer .footer-bgcolor .copyright {
+  text-align: center;
+  border-top: 1px solid #bcbcbc;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+footer .footer-bgcolor .copyright a {
+  color: #fff;
+}
+footer .footer-bgcolor .map-iframe {
+  width: 100%;
+  height: 55vh;
+}
+footer .footer-bgcolor .map-iframe iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (min-width: 800px) {
+  /* 960px以上に適用されるCSS（PC用）-------------------------------------------------- */
+  header {
+    display: none;
+  }
+  .toggle-btn {
+    display: none;
+  }
+  .sidebar {
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    display: inline;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #2d445d;
+    transition: all 0.5s ease;
+    color: #fff;
+    z-index: 9999;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .sidebar .icon-g {
+    padding: 40px 0;
+  }
+  .sidebar .icon-g h1 {
+    font-size: 25px;
+    text-align: center;
+    background: #2d445d;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    color: #fff;
+    font-family: "RocknRoll One", sans-serif;
+  }
+  .sidebar .icon-g .small-title {
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+  }
+  .sidebar .icon-g span {
+    color: #ff6600;
+  }
+  .sidebar .g-menu {
+    border-bottom: 1px solid #fff;
+    width: 180px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .sidebar .g-menu li {
+    line-height: 21px;
+    font-size: 16px;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  .sidebar .g-menu li svg {
+    width: 21px !important;
+    height: auto;
+    fill: #fff;
+    margin-right: 5px;
+    position: relative;
+    bottom: -11px;
+  }
+  .sidebar .g-menu li a {
+    align-items: center;
+    color: #fff;
+    position: relative;
+    padding-bottom: 2px;
+  }
+  .sidebar .g-menu li a::after {
+    content: "";
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*線の形状*/
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    /*アニメーションの指定*/
+    transition: all 0.3s;
+    transform: scale(0, 1); /*X方向0、Y方向1*/
+    transform-origin: left top; /*左上基点*/
+  }
+  .sidebar .g-menu li a:hover::after {
+    transform: scale(1, 1); /*X方向にスケール拡大*/
+  }
+  .sidebar .g-menu .color-list {
+    border-top: 1px solid #fff;
+  }
+  .sidebar .c-menu {
+    margin-top: 30px;
+  }
+  .sidebar .c-menu h2 {
+    line-height: 21px;
+    font-size: 14px;
+    padding-left: 60px;
+    margin-bottom: 10px;
+  }
+  .sidebar .c-menu h2 a {
+    color: #fff;
+  }
+  .sidebar .c-menu h3 {
+    margin-left: 60px;
+  }
+  .sidebar .c-menu h3 a {
+    color: #fff;
+  }
+  .sidebar .c-menu .handled {
+    overflow-y: auto;
+    height: 35vh;
+  }
+  .sidebar .c-menu .handled ul {
+    width: 150px;
+    margin-left: 60px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .sidebar .c-menu .handled ul li {
+    margin: 5px 0;
+  }
+  .sidebar .c-menu .handled ul li a {
+    color: #fff;
+  }
+  .sidebar .c-menu .handled::-webkit-scrollbar {
+    display: none;
+  }
+  .sidebar .searh-form {
+    width: 75%;
+    margin: 5px auto;
+  }
+  .Recommendation {
+    width: 80%;
+    margin: 50px auto;
+  }
+  .Recommendation__flex {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px 10px;
+    border: 1px solid #000000;
+    padding: 10px 30px;
+  }
+  .Recommendation__title {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333;
+    width: 100%;
+    letter-spacing: 0.15em;
+  }
+  .Recommendation__image {
+    margin: auto;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .Recommendation__left {
+    width: 30%;
+  }
+  .Recommendation__right {
+    padding: 10px 30px;
+    width: 60%;
+  }
+  main {
+    width: calc(100% - 250px);
+    margin-left: auto;
+    margin-top: 0;
+  }
+  main #header_sub {
+    display: inline;
+    position: fixed;
+    top: 0;
+    left: auto;
+    right: auto;
+    z-index: 1;
+    transform: translateY(-106px);
+    background-color: #fbfbfb;
+    border-bottom: 0.5px solid #333;
+    width: 85%;
+    transition: all 0.3s;
+    padding: 0;
+    padding-left: 20px;
+  }
+  main #header_sub p {
+    font-size: 12px;
+    text-align: left;
+    padding-right: 20px;
+  }
+  main #header_sub p span {
+    font-size: 25px;
+  }
+  main #header_sub.scrolled {
+    transform: translateY(0);
+  }
+  main .original-product h2 {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333333;
+    width: 100%;
+    letter-spacing: 0.15em;
+  }
+  main .original-product h2:after {
+    content: "ORIGINAL PRODUCT";
+    width: 100%;
+    display: block;
+    position: absolute;
+    font-size: 400%;
+    color: #f7f7f7;
+    z-index: -1;
+    transform: translateY(-20%);
+  }
+  main .featured-product h2 {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333333;
+    width: 100%;
+    letter-spacing: 0.15em;
+  }
+  main .featured-product h2:after {
+    content: "FEATURED PRODUCT";
+    width: 100%;
+    display: block;
+    position: absolute;
+    font-size: 400%;
+    color: #f7f7f7;
+    z-index: -1;
+    transform: translateY(-20%);
+  }
+  main .handled-product h2 {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333333;
+    width: 100%;
+    letter-spacing: 0.15em;
+  }
+  main .handled-product h2:after {
+    content: "PRODUCT HANDLED";
+    width: 100%;
+    display: block;
+    position: absolute;
+    font-size: 400%;
+    color: #f7f7f7;
+    z-index: -1;
+    transform: translateY(-20%);
+  }
+  main .m_products .m_product_item {
+    width: 250 px !important;
+  }
+  main .m_products img {
+    height: auto;
+  }
+  main .m_products h2 {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333333;
+    width: 100%;
+    letter-spacing: 0.15em;
+  }
+  main .paydelivery {
+    margin-top: 200px;
+  }
+  main .paydelivery h2 {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333333;
+    width: 100%;
+    letter-spacing: 0.15em;
+  }
+  main .paydelivery #postage_table {
+    width: 60%;
+    margin: 0 auto;
+    border: solid 2px #000000 !important;
+    border-collapse: collapse;
+  }
+  main .paydelivery #postage_table .table_flex {
+    display: flex;
+  }
+  main .paydelivery #postage_table .table_flex tr {
+    vertical-align: baseline;
+  }
+  main .paydelivery #postage_table .table_flex tr th {
+    border: solid 1px #000000;
+    background-color: #ebebeb;
+  }
+  main .paydelivery #postage_table .table_flex tr td {
+    border: solid 1px #000000;
+  }
+  main .catalog h2 {
+    text-align: center;
+    padding-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  main .catalog .product-flex-wrap {
+    width: 98%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 210px);
+    justify-content: center;
+    grid-gap: 10px;
+  }
+  main .catalog .product-flex-wrap li {
+    border-collapse: collapse;
+    margin-left: 30px;
+    margin-right: 30px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    min-height: 350px;
+    display: flex !important;
+  }
+  main .catalog .product-flex-wrap li h1 {
+    font-size: 14px;
+  }
+  main .catalog .product-flex-wrap li .detail {
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+  }
+  main .catalog .product-flex-wrap li .m_product_btn {
+    font-size: 14px;
+  }
+  main .catalog .product-flex-wrap li .m_product_btn a {
+    height: 40px;
+  }
+  main .catalog .product-flex-wrap li .m_product_btn a .label {
+    font-size: 12px;
+  }
+  main .catalog .product-flex-wrap li .m_product_btn a .label .font-n {
+    display: inline;
+  }
+  main .detail-page {
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 100px;
+    margin-bottom: 150px;
+  }
+  main .detail-page h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  main .detail-page img {
+    width: 300px;
+  }
+  main .detail-page__flex {
+    font-size: 16px;
+  }
+  main .detail-page__flex h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  main .detail-page__flex .field-p {
+    border-bottom: 1px solid #333333;
+  }
+  main .detail-page__flex .field p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  main .detail-page__flex .field .field_price {
+    font-size: 22px;
+    text-align: right;
+    color: #ed5b14;
+  }
+  main .tokutei {
+    width: 90%;
+    margin: 0 auto;
+  }
+  main .tokutei h2 {
+    padding: 50px 0 10px 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 2px solid #333333;
+  }
+  main .tokutei .entry {
+    width: 90%;
+    margin: 0 auto;
+  }
+  main .tokutei .entry h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+  }
+  main .tokutei .entry table tbody tr {
+    border-bottom: 1px solid #333333;
+  }
+  .single-main {
+    margin-top: 50px;
+  }
+  .single-main #itempage {
+    max-width: 100%;
+  }
+  .single-main .entry {
+    display: flex;
+    justify-content: space-between;
+  }
+  .single-main .detail-left {
+    width: 20%;
+  }
+  .single-main .detail-left ul {
+    display: block;
+  }
+  .single-main .detail-left ul li {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .single-main .detail-right {
+    width: 70%;
+  }
+  .heightLine {
+    width: calc(90% - 250px);
+    margin-left: 300px;
+  }
+  .heightLine .post {
+    width: 100%;
+  }
+  .heightLine .post .privacypolicy {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .heightLine .post .privacypolicy h2 {
+    padding: 50px 0 10px 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 2px solid #333333;
+  }
+  .heightLine .post .privacypolicy #personal_info ol li {
+    line-height: 30px;
+  }
+  .heightLine .post .privacypolicy #personal_info h3 {
+    margin: 55px 0 20px 0;
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #2d445d;
+    border-left: 8px solid #2d445d;
+    width: 500px;
+    padding-left: 15px;
+  }
+  .heightLine .post h2 {
+    font-size: 27px;
+    font-weight: 700;
+    color: #1a2400;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+  .heightLine .post h2::after {
+    content: "Meisei";
+    display: block;
+    width: 100%;
+    display: block;
+    position: absolute;
+    font-size: 400%;
+    color: #f7f7f7;
+    z-index: -1;
+    transform: translateY(-20%);
+    opacity: 0.3;
+  }
+  .heightLine .post .company {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 200px;
+  }
+  .heightLine .post .company h2 {
+    font-size: 1.9rem;
+    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+    color: #333333;
+    width: 100%;
+    letter-spacing: 0.15em;
+    margin-bottom: 0;
+  }
+  .heightLine .post .company .company-flex {
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .heightLine .post .company .company-flex table {
+    margin: 0;
+    width: 100%;
+  }
+  .heightLine .post .company .company-flex .map-iframe {
+    width: 100%;
+    height: 55vh;
+  }
+  .heightLine .post .company .company-flex .map-iframe iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .heightLine .post .usccart_navi li.ucart {
+    display: block;
+    color: #262626;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 0.409095em 0 0.81818em;
+    background: #dedede;
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    width: 25%;
+  }
+  .heightLine .post .usccart_navi li.ucart::before {
+    content: " ";
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0 -20px -20px auto;
+    float: right;
+    -webkit-transform: skew(20deg);
+    background: #dedede;
+    border-right: 4px solid #fff;
+    transform: skew(20deg);
+  }
+  .heightLine .post .usccart_navi li.ucart::after {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: -20px -20px 0 auto;
+    background: #dedede;
+    border-right: 4px solid #fff;
+    position: relative;
+    content: " ";
+    transform: skew(-20deg);
+  }
+  .heightLine .post div.usccart_navi li.usccart_cart,
+.heightLine .post div.usccart_navi li.usccart_customer,
+.heightLine .post div.usccart_navi li.usccart_delivery,
+.heightLine .post div.usccart_navi li.usccart_uscconfirm {
+    color: #fff;
+    background-color: #2d445d;
+  }
+  .heightLine .post .send input.to_customerinfo_button,
+.heightLine .post .send input.to_memberlogin_button,
+.heightLine .post .send input.to_deliveryinfo_button,
+.heightLine .post .send input.to_confirm_button,
+.heightLine .post .send input#purchase_button {
+    color: #fff;
+    background-color: #ff6600;
+  }
+  .heightLine .post .send input {
+    border: none;
+    padding: 10px 40px;
+  }
+  .heightLine .post #cart .upbutton {
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+  .heightLine .post #cart .upbutton input {
+    color: #ff6600;
+    display: inline;
+    margin-left: 10px;
+    padding: 3px 15px;
+    background-color: #fff;
+    border: 1px solid #ff6600;
+    border-radius: 3px;
+  }
+  .heightLine .post #cart_table {
+    width: 100%;
+    border: 1px dotted #ccc;
+    border-collapse: collapse;
+  }
+  .heightLine .post #cart_table th {
+    padding: 1.357143em;
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    text-align: center;
+    color: #000000;
+  }
+  .heightLine .post #cart table#cart_table {
+    margin-bottom: 50px;
+  }
+  .heightLine .post #inside-cart .send {
+    text-align: center;
+    width: auto;
+    margin-top: 15px;
+    padding-top: 15px;
+    border: none;
+  }
+  .heightLine .post #customer-info h5 {
+    background-color: rgba(0, 0, 0, 0);
+    color: #000;
+    margin: 1.42857em 0;
+    padding: 0.357143em 0 0.357143em 0.357143em;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .heightLine .post .customer_form tr {
+    display: table-row;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+  }
+  .heightLine .post #customer-info th {
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: bold;
+    color: #4c4d25;
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #e6e6e6;
+    background-color: #f3f3f3;
+    padding: 20px 40px;
+    width: 40%;
+  }
+  .heightLine .post #customer-info .customer_form input {
+    width: 100%;
+    margin-right: 3px;
+    padding: 14px 0px;
+    font-size: 16px;
+    max-width: 50%;
+  }
+  .heightLine .post .send input.to_customerinfo_button,
+.heightLine .post .send input.to_memberlogin_button,
+.heightLine .post .send input.to_deliveryinfo_button,
+.heightLine .post .send input.to_confirm_button,
+.heightLine .post .send input#purchase_button {
+    color: #fff;
+    background-color: #ff8c00;
+  }
+  .heightLine .post .wpcf7-form-control {
+    width: 100%;
+    margin: 5px auto;
+    max-width: 50%;
+  }
+  .heightLine .post input.wpcf7-form-control.wpcf7-submit.has-spinner {
+    width: 200px;
+    margin-left: 34%;
+    margin-right: 50%;
+    background-color: #f60;
+    color: #fff;
+    padding: 10px;
+  }
+  .heightLine .post #itempage .itemimg img {
+    margin: 50px auto;
+    padding: 0px;
+    width: 50%;
+    height: auto;
+    max-width: 400px;
+  }
+  footer {
+    width: calc(100% - 250px);
+    margin-left: auto;
+  }
+  footer .top-back {
+    text-align: right;
+    margin-right: 50px;
+  }
+  footer .top-back a {
+    color: #000000;
+  }
+  footer .footer-bgcolor {
+    background-color: #2d445d;
+  }
+  footer .footer-bgcolor .company-flex {
+    padding-top: 50px;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  footer .footer-bgcolor .company-flex ul {
+    width: auto;
+    margin: 0 0 0 100px;
+  }
+  footer .footer-bgcolor .f-navi {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer .footer-bgcolor .f-navi a {
+    color: #fff;
+  }
+  footer .footer-bgcolor .copyright {
+    text-align: center;
+    border-top: 1px solid #bcbcbc;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  footer .footer-bgcolor .copyright a {
+    color: #fff;
+  }
+}
+/*# sourceMappingURL=style.css.map */
