@@ -2,7 +2,7 @@
     <?php wp_footer(); ?>
     <footer>
       <p class="top-back">
-        <a href="#top" title="このページの上部へ">▲このページの上部へ</a>
+        <a href="#top" title="このページの上部へ">▲このページのtopへ</a>
       </p>
       <div class="footer-bgcolor">
         <div class="company-flex">
