@@ -66,7 +66,7 @@
       </div>
       <div class="cartnai"> <a href="<?php echo get_option('home'); ?>/usces-cart.html"title="カート内情報">  <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 32px; height: 32px; opacity: 1;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#fff;}
+
 </style>
 <g>
 	<path class="st0" d="M426.093,0c-9.344,0-17.502,6.318-19.838,15.363l-20.277,78.574H28.775c-6.434,0-12.496,3.025-16.363,8.166
